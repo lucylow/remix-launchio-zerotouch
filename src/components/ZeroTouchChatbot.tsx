@@ -265,7 +265,7 @@ export const ZeroTouchChatbot = () => {
       className="fixed bottom-6 right-6 z-50 w-96 h-[600px]"
     >
       <Card className="h-full flex flex-col shadow-2xl border-2">
-        <CardHeader className="pb-2">
+        <CardHeader className="pb-2 flex-shrink-0">
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2">
               <Bot className="h-5 w-5 text-primary" />
@@ -296,9 +296,10 @@ export const ZeroTouchChatbot = () => {
           </div>
         </CardHeader>
 
-        <CardContent className="flex-1 flex flex-col p-4 pt-0">
-          <ScrollArea className="flex-1 pr-2">
-            <div className="space-y-4">
+        <CardContent className="flex-1 flex flex-col p-4 pt-0 min-h-0">
+          {/* Messages Area with Fixed Height and Scroll */}
+          <ScrollArea className="flex-1 pr-2 mb-4">
+            <div className="space-y-4 pb-4">
               {messages.map((message) => (
                 <div
                   key={message.id}
@@ -311,25 +312,25 @@ export const ZeroTouchChatbot = () => {
                         : 'bg-muted'
                     }`}
                   >
-                     {message.type === 'agent' && message.agent && message.agent !== 'system' && (
-                       <div className="flex items-center gap-2 mb-1 flex-wrap">
-                         <Badge variant="secondary" className="text-xs">
-                           {AGENT_PERSONAS[message.agent as keyof typeof AGENT_PERSONAS]?.emoji} 
-                           {AGENT_PERSONAS[message.agent as keyof typeof AGENT_PERSONAS]?.name}
-                         </Badge>
-                         {message.confidence && (
-                           <Badge variant="outline" className="text-xs">
-                             {Math.round(message.confidence * 100)}%
-                           </Badge>
-                         )}
-                         {message.knowledge_sources && message.knowledge_sources > 0 && (
-                           <Badge variant="outline" className="text-xs bg-blue-50 text-blue-700">
-                             📚 {message.knowledge_sources} sources
-                           </Badge>
-                         )}
-                       </div>
-                     )}
-                    <p className="text-sm">{message.content}</p>
+                    {message.type === 'agent' && message.agent && message.agent !== 'system' && (
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
+                        <Badge variant="secondary" className="text-xs">
+                          {AGENT_PERSONAS[message.agent as keyof typeof AGENT_PERSONAS]?.emoji} 
+                          {AGENT_PERSONAS[message.agent as keyof typeof AGENT_PERSONAS]?.name}
+                        </Badge>
+                        {message.confidence && (
+                          <Badge variant="outline" className="text-xs">
+                            {Math.round(message.confidence * 100)}%
+                          </Badge>
+                        )}
+                        {message.knowledge_sources && message.knowledge_sources > 0 && (
+                          <Badge variant="outline" className="text-xs bg-blue-50 text-blue-700">
+                            📚 {message.knowledge_sources} sources
+                          </Badge>
+                        )}
+                      </div>
+                    )}
+                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                     <p className="text-xs opacity-60 mt-1">
                       {message.timestamp.toLocaleTimeString()}
                     </p>
@@ -353,51 +354,57 @@ export const ZeroTouchChatbot = () => {
             <div ref={messagesEndRef} />
           </ScrollArea>
 
-          {/* Input Area */}
-          <div className="flex gap-2 mt-4">
-            <Input
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder={`Ask ${AGENT_PERSONAS[activeAgent].name} about maritime logistics...`}
-              disabled={isLoading}
-              className="flex-1"
-            />
-            <Button
-              onClick={sendMessage}
-              disabled={isLoading || !inputValue.trim()}
-              size="sm"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
-          </div>
+          {/* Fixed Input Area at Bottom */}
+          <div className="flex-shrink-0 space-y-2">
+            {/* Input Area */}
+            <div className="flex gap-2">
+              <Input
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder={`Ask ${AGENT_PERSONAS[activeAgent].name} about maritime logistics...`}
+                disabled={isLoading}
+                className="flex-1"
+              />
+              <Button
+                onClick={sendMessage}
+                disabled={isLoading || !inputValue.trim()}
+                size="sm"
+              >
+                <Send className="h-4 w-4" />
+              </Button>
+            </div>
 
-          {/* Quick Actions */}
-          <div className="flex flex-wrap gap-1 mt-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setInputValue("Analyze port strike in Los Angeles")}
-              className="text-xs"
-            >
-              Port Crisis
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setInputValue("Optimize container routing")}
-              className="text-xs"
-            >
-              Route Optimization
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setInputValue("Calculate cost savings")}
-              className="text-xs"
-            >
-              Cost Analysis
-            </Button>
+            {/* Quick Actions */}
+            <div className="flex flex-wrap gap-1">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setInputValue("Analyze port strike in Los Angeles")}
+                className="text-xs"
+                disabled={isLoading}
+              >
+                Port Crisis
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setInputValue("Optimize container routing")}
+                className="text-xs"
+                disabled={isLoading}
+              >
+                Route Optimization
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setInputValue("Calculate cost savings")}
+                className="text-xs"
+                disabled={isLoading}
+              >
+                Cost Analysis
+              </Button>
+            </div>
           </div>
         </CardContent>
       </Card>
