@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ZeroTouchDashboard from "../components/ZeroTouchDashboard";
 import { LaunchIODemo } from "../components/LaunchIODemo";
+import { ZeroTouchChatbot } from "../components/ZeroTouchChatbot";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Brain, Ship } from "lucide-react";
 
@@ -27,6 +28,9 @@ const Index = () => {
           <LaunchIODemo />
         </TabsContent>
       </Tabs>
+      
+      {/* Floating ZeroTouch AI Chatbot */}
+      <ZeroTouchChatbot />
     </div>
   );
 };
