@@ -19,8 +19,9 @@ serve(async (req) => {
   }
 
   try {
-    const launchIoApiKey = Deno.env.get('LAUNCH_IO_API_KEY');
+    const launchIoApiKey = Deno.env.get('Launch IO API key') || Deno.env.get('LAUNCH_IO_API_KEY');
     if (!launchIoApiKey) {
+      console.log('Available env variables:', Object.keys(Deno.env.toObject()));
       throw new Error('Launch IO API key not configured');
     }
 
