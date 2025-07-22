@@ -20,6 +20,8 @@ This document provides a comprehensive technical overview of the ZeroTouch backe
 
 ### 1.3. Key Features
 
+![](![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/Screenshot%20(417).png?raw=true))
+
 -   **Autonomous Crisis Resolution**: End-to-end workflow from detection to resolution.
 -   **AI Agent Orchestration**: 5 specialized AI agents working in coordination.
 -   **Launch IO Integration**: Deep integration with both AI Models and AI Agent APIs.
@@ -35,6 +37,8 @@ This document provides a comprehensive technical overview of the ZeroTouch backe
 -   **87% Faster Resolution**: AI-driven decisions vs. manual intervention.
 -   **99.2% Success Rate**: High reliability in crisis scenarios.
 
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/40.png?raw=true)
+
 ---
 
 ## 2. System Architecture
@@ -44,8 +48,6 @@ This document provides a comprehensive technical overview of the ZeroTouch backe
 ![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/28.png?raw=true)
 
 The system follows a microservices-oriented architecture with a React frontend and a Flask backend. The backend serves as the core orchestration layer, integrating with Launch IO APIs and managing the AI agent workflow.
-
-![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/18.png?raw=true)
 
 ### 2.2. Component Diagram
 
@@ -93,6 +95,8 @@ The system follows a microservices-oriented architecture with a React frontend a
 4.  **Human Approval**: At the negotiation step, the backend waits for frontend approval via `/api/workflow/<id>/step`.
 5.  **Real-time Updates**: Frontend polls backend endpoints for status updates on agents, workflow, and metrics.
 6.  **Workflow Completion**: Backend marks workflow as complete and logs results.
+
+[remix-launchio-zerotouch/images/ZeroTouch-Port-Strike-Risk-Report (3)_compressed (1).pdf at main · lucylow/remix-launchio-zerotouch](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/ZeroTouch-Port-Strike-Risk-Report%20(3)_compressed%20(1).pdf)
 
 ---
 
@@ -146,6 +150,8 @@ The system follows a microservices-oriented architecture with a React frontend a
 
 ```
 
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/Screenshot%20(420).png?raw=true)
+
 ### 3.2. Core Modules
 
 -   **`main.py`**: Application factory and entry point.
@@ -184,6 +190,8 @@ The client provides methods like `generate_text`, `analyze_text`, and `make_deci
 
 The client provides methods like `execute_agent_task`, `get_agent_status`, and `orchestrate_workflow` to manage AI agents. It also includes specialized methods for the ZeroTouch system, such as `detect_port_crisis` and `optimize_routing`.
 
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/34.png?raw=true)
+
 ### 4.4. Rate Limiting and Retry Logic
 
 The `LaunchIOClient` includes built-in rate limiting to prevent API abuse and automatic retry logic with exponential backoff to handle transient network errors gracefully.
@@ -196,6 +204,8 @@ The client includes `async` methods (`async_execute_agent_task`, `async_orchestr
 
 ## 5. API Endpoints
 
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/29.png?raw=true)
+
 ### 5.1. Launch IO Integration Routes (`/api/launch-io`)
 
 -   **`POST /models/generate`**: Generate text.
@@ -204,6 +214,8 @@ The client includes `async` methods (`async_execute_agent_task`, `async_orchestr
 -   **`POST /agents/execute`**: Execute an agent task.
 -   **`GET /agents/<type>/status`**: Get agent status.
 -   **`POST /agents/workflow`**: Orchestrate a workflow.
+
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/Screenshot%20(421).png?raw=true)
 
 ### 5.2. Workflow Orchestration Routes (`/api/workflow`)
 
@@ -241,6 +253,8 @@ The client includes `async` methods (`async_execute_agent_task`, `async_orchestr
 4.  **Executor**: Implements rerouting.
 5.  **Audit**: Logs and verifies compliance.
 
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/18.png?raw=true)
+
 ### 6.2. Agent Specializations
 
 Each agent is designed for a specific task, leveraging different AI models and capabilities within the Launch IO ecosystem. This specialization improves efficiency and accuracy.
@@ -252,6 +266,8 @@ Workflow state is managed in-memory in the backend (can be extended to a databas
 ### 6.4. Human Approval Gateway
 
 During the negotiation step, the workflow pauses and waits for human approval from the frontend. This is a critical feature for maintaining human oversight in autonomous systems.
+
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/Screenshot%20(416).png?raw=true)
 
 ---
 
@@ -297,11 +313,11 @@ In a production environment, multiple instances of the backend can be run behind
 
 ## 9. Security and Compliance
 
-![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/29.png?raw=true)
-
 ### 9.1. API Key Management
 
 Launch IO API keys are managed via environment variables and are not hardcoded in the source code. The `.env.example` file provides a template for secure configuration.
+
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/Screenshot%20(422).png?raw=true)
 
 ### 9.2. Data Encryption
 
@@ -314,6 +330,8 @@ Comprehensive logging provides a detailed audit trail of all system activities, 
 ### 9.4. Compliance with Regulations
 
 The system can be configured to comply with industry regulations such as SOX and GDPR by implementing appropriate data handling and privacy measures.
+
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/Screenshot%20(419).png?raw=true)
 
 ---
 
@@ -369,6 +387,8 @@ Load testing should be performed to measure the system’s performance under hea
 
 Integrate more advanced AI models from Launch IO for improved decision-making, predictive analytics, and natural language understanding.
 
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/Screenshot%20(423).png?raw=true)
+
 ### 12.2. Real-time Data Streams
 
 Integrate with real-time data streams (e.g., Kafka, WebSockets) for even faster crisis detection and response.
@@ -377,8 +397,8 @@ Integrate with real-time data streams (e.g., Kafka, WebSockets) for even faster 
 
 Use historical data to train predictive models that can anticipate port strikes and other disruptions before they occur.
 
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/33.png?raw=true)
+
 ### 12.4. Expanded Agent Capabilities
 
 Develop new AI agents with expanded capabilities, such as automated communication with stakeholders, dynamic resource allocation, and self-healing systems.
-
-![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/40.png?raw=true)
