@@ -14,13 +14,13 @@ ZeroTouch Port Strike Response is a fully autonomous AI system designed to detec
 
 ### 1.2. Purpose and Scope
 
-This document provides a comprehensive technical overview of the ZeroTouch backend system. It is intended for developers, architects, and technical judges to understand the system’s architecture, implementation details, and operational characteristics.
-
 ![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/12.png?raw=true)
+
+This document provides a comprehensive technical overview of the ZeroTouch backend system. It is intended for developers, architects, and technical judges to understand the system’s architecture, implementation details, and operational characteristics.
 
 ### 1.3. Key Features
 
-![](![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/Screenshot%20(417).png?raw=true))
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/Screenshot%20(417).png?raw=true)
 
 -   **Autonomous Crisis Resolution**: End-to-end workflow from detection to resolution.
 -   **AI Agent Orchestration**: 5 specialized AI agents working in coordination.
