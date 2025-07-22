@@ -1,7 +1,10 @@
-# 🚢 ZeroTouch Port Strike Response AI 
-**Version 2.0.0 - Launch IO Hackathon 2025 Q2**
+# 🚢 ZeroTouch Port Strike Response AI 
+
+**Launch IO Hackathon 2025 Q2**
 
 ---
+
+## ![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/8.png?raw=true)
 
 ## 1. Introduction
 
@@ -13,22 +16,24 @@ ZeroTouch Port Strike Response is a fully autonomous AI system designed to detec
 
 This document provides a comprehensive technical overview of the ZeroTouch backend system. It is intended for developers, architects, and technical judges to understand the system’s architecture, implementation details, and operational characteristics.
 
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/12.png?raw=true)
+
 ### 1.3. Key Features
 
--   **Autonomous Crisis Resolution**: End-to-end workflow from detection to resolution.
--   **AI Agent Orchestration**: 5 specialized AI agents working in coordination.
--   **Launch IO Integration**: Deep integration with both AI Models and AI Agent APIs.
--   **Real-time Monitoring**: Live dashboard with port status, agent activity, and metrics.
--   **Human Approval Gateway**: Optional human-in-the-loop for critical decisions.
--   **Performance Analytics**: Quantified business impact and operational metrics.
--   **Scalable Architecture**: Designed for high-throughput and enterprise deployment.
+-   **Autonomous Crisis Resolution**: End-to-end workflow from detection to resolution.
+-   **AI Agent Orchestration**: 5 specialized AI agents working in coordination.
+-   **Launch IO Integration**: Deep integration with both AI Models and AI Agent APIs.
+-   **Real-time Monitoring**: Live dashboard with port status, agent activity, and metrics.
+-   **Human Approval Gateway**: Optional human-in-the-loop for critical decisions.
+-   **Performance Analytics**: Quantified business impact and operational metrics.
+-   **Scalable Architecture**: Designed for high-throughput and enterprise deployment.
 
 ### 1.4. Business Impact
 
--   **$2.1M Cost Savings**: Demonstrated savings through automated rerouting.
--   **42 Tons CO₂ Reduction**: Optimized logistics for environmental benefits.
--   **87% Faster Resolution**: AI-driven decisions vs. manual intervention.
--   **99.2% Success Rate**: High reliability in crisis scenarios.
+-   **$2.1M Cost Savings**: Demonstrated savings through automated rerouting.
+-   **42 Tons CO₂ Reduction**: Optimized logistics for environmental benefits.
+-   **87% Faster Resolution**: AI-driven decisions vs. manual intervention.
+-   **99.2% Success Rate**: High reliability in crisis scenarios.
 
 ---
 
@@ -36,32 +41,49 @@ This document provides a comprehensive technical overview of the ZeroTouch backe
 
 ### 2.1. High-Level Architecture
 
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/28.png?raw=true)
+
 The system follows a microservices-oriented architecture with a React frontend and a Flask backend. The backend serves as the core orchestration layer, integrating with Launch IO APIs and managing the AI agent workflow.
+
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/18.png?raw=true)
 
 ### 2.2. Component Diagram
 
-```
-+-----------------------+      +-----------------------+      +-----------------------+
-|       React Frontend      |      |      Flask Backend        |      |      Launch IO API        |
-+-----------------------+      +-----------------------+      +-----------------------+
-| - Real-time Dashboard     |      | - REST API Endpoints      |      | - AI Models API           |
-| - Agent Visualization     |      | - Workflow Orchestration  |      | - AI Agent API            |
-| - Port Status Map         |      | - Launch IO Client        |      | - Health & Status         |
-| - Performance Metrics     |      | - Agent Management        |      +-----------------------+
-| - Human Approval Gateway  |      | - Metrics & Analytics     |             ^
-+-----------------------+      +-----------------------+             |
-        ^                          ^
-        |                          |
-        +-----------> API Calls <----------+
+```javascript
+
++-----------------------+      +-----------------------+      +-----------------------+
+
+|       React Frontend      |      |      Flask Backend        |      |      Launch IO API        |
+
++-----------------------+      +-----------------------+      +-----------------------+
+
+| - Real-time Dashboard     |      | - REST API Endpoints      |      | - AI Models API           |
+
+| - Agent Visualization     |      | - Workflow Orchestration  |      | - AI Agent API            |
+
+| - Port Status Map         |      | - Launch IO Client        |      | - Health & Status         |
+
+| - Performance Metrics     |      | - Agent Management        |      +-----------------------+
+
+| - Human Approval Gateway  |      | - Metrics & Analytics     |             ^
+
++-----------------------+      +-----------------------+             |
+
+        ^                          ^
+
+        |                          |
+
+        +-----------> API Calls <----------+
+
 ```
 
 ### 2.3. Technology Stack
 
--   **Backend**: Python 3.10, Flask 2.3.3, Gunicorn
--   **Frontend**: React 18, TypeScript, Vite, Tailwind CSS
--   **AI Integration**: Launch IO AI Models API, AI Agent API
--   **Data Storage**: In-memory (can be extended to SQLite, PostgreSQL, Redis)
--   **Deployment**: Docker, Kubernetes (optional)
+-   **Backend**: Python 3.10, Flask 2.3.3, Gunicorn
+-   **Frontend**: React 18, TypeScript, Vite, Tailwind CSS
+-   **AI Integration**: Launch IO AI Models API, AI Agent API
+-   **Data Storage**: In-memory (can be extended to SQLite, PostgreSQL, Redis)
+-   **Deployment**: Docker, Kubernetes (optional)
 
 ### 2.4. Data Flow Diagram
 
@@ -78,36 +100,58 @@ The system follows a microservices-oriented architecture with a React frontend a
 
 ### 3.1. Project Structure
 
-```
+```javascript
+
 /launch-io-backend-package
-├── main.py                 # Application entry point
-├── routes/                 # API blueprints
-│   ├── launch_io_integration.py
-│   ├── workflow_orchestration.py
-│   ├── agent_management.py
-│   └── metrics_analytics.py
-├── services/               # Business logic and external integrations
-│   └── launch_io_client.py
-├── utils/                  # Helper functions and utilities
-│   ├── config.py
-│   ├── logger.py
-│   ├── validators.py
-│   └── response_formatter.py
-├── models/                 # Data models and schemas (optional)
-├── data/                   # Mock data and constants (optional)
-├── static/                 # React frontend build files
-├── templates/              # Server-side templates (if needed)
-├── tests/                  # Unit and integration tests
-├── requirements.txt        # Python dependencies
-└── .env.example            # Environment variable template
+
+├── main.py                 # Application entry point
+
+├── routes/                 # API blueprints
+
+│   ├── launch_io_integration.py
+
+│   ├── workflow_orchestration.py
+
+│   ├── agent_management.py
+
+│   └── metrics_analytics.py
+
+├── services/               # Business logic and external integrations
+
+│   └── launch_io_client.py
+
+├── utils/                  # Helper functions and utilities
+
+│   ├── config.py
+
+│   ├── logger.py
+
+│   ├── validators.py
+
+│   └── response_formatter.py
+
+├── models/                 # Data models and schemas (optional)
+
+├── data/                   # Mock data and constants (optional)
+
+├── static/                 # React frontend build files
+
+├── templates/              # Server-side templates (if needed)
+
+├── tests/                  # Unit and integration tests
+
+├── requirements.txt        # Python dependencies
+
+└── .env.example            # Environment variable template
+
 ```
 
 ### 3.2. Core Modules
 
--   **`main.py`**: Application factory and entry point.
--   **`routes/`**: Modular API blueprints for clean separation of concerns.
--   **`services/launch_io_client.py`**: Centralized client for all Launch IO API interactions.
--   **`utils/`**: Reusable utilities for configuration, logging, validation, and response formatting.
+-   **`main.py`**: Application factory and entry point.
+-   **`routes/`**: Modular API blueprints for clean separation of concerns.
+-   **`services/launch_io_client.py`**: Centralized client for all Launch IO API interactions.
+-   **`utils/`**: Reusable utilities for configuration, logging, validation, and response formatting.
 
 ### 3.3. Application Factory Pattern
 
@@ -129,8 +173,8 @@ Logging is centralized in `utils/logger.py` and provides structured, rotating lo
 
 The `LaunchIOClient` class in `services/launch_io_client.py` is the core of the Launch IO integration. It provides high-level abstractions for:
 
--   AI Models API (text generation, analysis, decision-making)
--   AI Agent API (task execution, status checks, workflow orchestration)
+-   AI Models API (text generation, analysis, decision-making)
+-   AI Agent API (task execution, status checks, workflow orchestration)
 
 ### 4.2. AI Models API Integration
 
@@ -154,36 +198,36 @@ The client includes `async` methods (`async_execute_agent_task`, `async_orchestr
 
 ### 5.1. Launch IO Integration Routes (`/api/launch-io`)
 
--   **`POST /models/generate`**: Generate text.
--   **`POST /models/analyze`**: Analyze text.
--   **`POST /models/decide`**: Make a decision.
--   **`POST /agents/execute`**: Execute an agent task.
--   **`GET /agents/<type>/status`**: Get agent status.
--   **`POST /agents/workflow`**: Orchestrate a workflow.
+-   **`POST /models/generate`**: Generate text.
+-   **`POST /models/analyze`**: Analyze text.
+-   **`POST /models/decide`**: Make a decision.
+-   **`POST /agents/execute`**: Execute an agent task.
+-   **`GET /agents/<type>/status`**: Get agent status.
+-   **`POST /agents/workflow`**: Orchestrate a workflow.
 
 ### 5.2. Workflow Orchestration Routes (`/api/workflow`)
 
--   **`POST /start`**: Start a new workflow.
--   **`GET /<id>/status`**: Get workflow status.
--   **`POST /<id>/step`**: Execute a workflow step.
--   **`POST /<id>/complete`**: Mark a workflow as complete.
+-   **`POST /start`**: Start a new workflow.
+-   **`GET /<id>/status`**: Get workflow status.
+-   **`POST /<id>/step`**: Execute a workflow step.
+-   **`POST /<id>/complete`**: Mark a workflow as complete.
 
 ### 5.3. Agent Management Routes (`/api/agents`)
 
--   **`GET /status`**: Get all agent statuses.
--   **`GET /<id>/status`**: Get a specific agent’s status.
--   **`POST /<id>/update`**: Update an agent’s status.
+-   **`GET /status`**: Get all agent statuses.
+-   **`GET /<id>/status`**: Get a specific agent’s status.
+-   **`POST /<id>/update`**: Update an agent’s status.
 
 ### 5.4. Metrics and Analytics Routes (`/api/metrics`)
 
--   **`GET /performance`**: Get performance metrics.
--   **`GET /business-impact`**: Get business impact analytics.
--   **`GET /agent-performance`**: Get individual agent performance.
+-   **`GET /performance`**: Get performance metrics.
+-   **`GET /business-impact`**: Get business impact analytics.
+-   **`GET /agent-performance`**: Get individual agent performance.
 
 ### 5.5. Health Check and Error Handling
 
--   **`GET /health`**: System health check.
--   **Error Handling**: Centralized 404 and 500 error handlers in `main.py`.
+-   **`GET /health`**: System health check.
+-   **Error Handling**: Centralized 404 and 500 error handlers in `main.py`.
 
 ---
 
@@ -253,6 +297,8 @@ In a production environment, multiple instances of the backend can be run behind
 
 ## 9. Security and Compliance
 
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/29.png?raw=true)
+
 ### 9.1. API Key Management
 
 Launch IO API keys are managed via environment variables and are not hardcoded in the source code. The `.env.example` file provides a template for secure configuration.
@@ -278,7 +324,9 @@ The system can be configured to comply with industry regulations such as SOX and
 The backend can be deployed using a WSGI server like Gunicorn. A sample command is provided in `main.py`:
 
 ```bash
+
 gunicorn -w 4 -b 0.0.0.0:5000 main:app
+
 ```
 
 ### 10.2. Environment Configuration
@@ -333,4 +381,4 @@ Use historical data to train predictive models that can anticipate port strikes 
 
 Develop new AI agents with expanded capabilities, such as automated communication with stakeholders, dynamic resource allocation, and self-healing systems.
 
-
+![](https://github.com/lucylow/remix-launchio-zerotouch/blob/main/images/40.png?raw=true)
